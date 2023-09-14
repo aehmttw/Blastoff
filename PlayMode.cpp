@@ -152,9 +152,9 @@ void add_arrow_to_scene(Scene &scene, uint8_t dir, int8_t x, int8_t y, int8_t z)
     Mesh const &mesh = arrow_mesh->lookup("arrow");
 
     Scene::Transform *t = new Scene::Transform();
-    t->position.x = (x + 1) * tile_size;
-    t->position.y = (y) * tile_size;
-    t->position.z = (z + 1) * tile_size;
+    t->position.x = (x + 0.5) * tile_size;
+    t->position.y = (y + 0.5) * tile_size;
+    t->position.z = (z + 0.5) * tile_size;
 
     if (dir == 0)
         t->rotation = glm::normalize(
