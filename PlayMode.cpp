@@ -186,6 +186,9 @@ void add_block_to_scene(Scene &scene, uint8_t id, int8_t x, int8_t y, int8_t z)
     t->position.y = (y + 0.5f) * tile_size;
     t->position.z = (z + 0.5f) * tile_size;
 
+    if (id == grass)
+        t->position.z -= tile_size * 1.0f;
+
     t->scale = glm::vec3(tile_size / 2, tile_size / 2, tile_size / 2);
     scene.drawables.emplace_back(t);
     Scene::Drawable &drawable = scene.drawables.back();
