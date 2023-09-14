@@ -229,9 +229,9 @@ void load_level(Scene &scene, std::string file)
     std::vector< glm::u8vec4 > data;
     load_png(file, &size, &data, UpperLeftOrigin);
 
-    for (int i = 0; i < size.x; i++)
+    for (unsigned int i = 0; i < size.x; i++)
     {
-        for (int j = 0; j < size.y; j++)
+        for (unsigned int j = 0; j < size.y; j++)
         {
             uint8_t layer = (uint8_t) ((i / level_size) + (size.x / level_size) * (j / level_size));
             uint8_t x = (uint8_t) (i % level_size);
@@ -247,7 +247,7 @@ void load_level(Scene &scene, std::string file)
             else if (col.x == 255 && col.y == 255 && col.z == 0)
                 tile = 3;
             else if (col.z == 255 && col.g == 0)
-                tile = col.x + 4;
+                tile = (uint8_t) col.x + 4;
 
             if (tile != 0)
             {
@@ -352,19 +352,19 @@ float bound_angle(float angle)
 {
     while (angle > M_PI * 2)
     {
-        angle -= M_PI * 2;
+        angle -= (float) (M_PI * 2);
     }
 
     while (angle < 0)
     {
-        angle += M_PI * 2;
+        angle += (float) (M_PI * 2);
     }
 
     return angle;
 }
 
 int level_index = 1;
-void reset(Scene &scene, bool target)
+void reset(Scene &scene, bool win)
 {
     blastoffTime = 0.0f;
     launched = false;
@@ -372,7 +372,7 @@ void reset(Scene &scene, bool target)
     player_pos = glm::vec3(0.0f, 0.0f, 0.0f);
     player_vel = glm::vec3(0.0f, 0.0f, 0.0f);
 
-    if (target)
+    if (win)
     {
         level_index++;
         initialPreviewTime = 3.0f;
@@ -468,7 +468,7 @@ void PlayMode::update(float elapsed)
         player_transform->position.z += blastoffTime * tile_size * 1.5f;
 
 		camera->transform->position = player_pos;
-        camera->transform->position.z += tile_size * 1.5;
+        camera->transform->position.z += tile_size * 1.5f;
         camera->transform->position.z += blastoffTime * tile_size * 10;
 
         if (preview)
