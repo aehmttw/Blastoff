@@ -20,8 +20,8 @@ all : \
 	$(DIST)/hexapod.scene \
 
 
-$(DIST)/hexapod.scene : hexapod.blend $(EXPORT_SCENE)
+$(DIST)/hexapod.scene : emptyscene.blend $(EXPORT_SCENE)
 	$(BLENDER) --background --python $(EXPORT_SCENE) -- '$<':Main '$@'
 
-$(DIST)/hexapod.pnct : hexapod.blend $(EXPORT_MESHES)
+$(DIST)/hexapod.pnct : emptyscene.blend $(EXPORT_MESHES)
 	$(BLENDER) --background --python $(EXPORT_MESHES) -- '$<':Main '$@'

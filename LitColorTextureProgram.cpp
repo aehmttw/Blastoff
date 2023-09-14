@@ -90,7 +90,7 @@ LitColorTextureProgram::LitColorTextureProgram() {
 		"		float nl = max(0.0, dot(n, l)) / max(1.0, dis2);\n"
 		"		e = nl * LIGHT_ENERGY;\n"
 		"	} else if (LIGHT_TYPE == 1) { //hemi light \n"
-		"		e = (dot(n,-LIGHT_DIRECTION) * 0.5 + 0.5) * LIGHT_ENERGY;\n"
+		"		e = (dot(n,-LIGHT_DIRECTION) * 0.25 + 0.75) * LIGHT_ENERGY;\n"
 		"	} else if (LIGHT_TYPE == 2) { //spot light \n"
 		"		vec3 l = (LIGHT_LOCATION - position);\n"
 		"		float dis2 = dot(l,l);\n"
