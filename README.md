@@ -18,4 +18,6 @@ To get an overhead view of the whole level, press and hold enter.
 
 Good luck!
 
+Note: The game must be run from the same directory with the data folder to work.
+
 This game was built with [NEST](NEST.md).
